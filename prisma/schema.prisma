@@ -1,0 +1,1063 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model abilities {
+  id             String  @id
+  identifier     String?
+  generation_id  String?
+  is_main_series String?
+}
+
+model ability_changelog {
+  id                          String  @id
+  ability_id                  String?
+  changed_in_version_group_id String?
+}
+
+model ability_changelog_prose {
+  ability_changelog_id String?
+  local_language_id    String?
+  effect               String?
+  id                   BigInt  @id @default(autoincrement())
+}
+
+model ability_prose {
+  ability_id        String?
+  local_language_id String?
+  short_effect      String?
+  effect            String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model berries {
+  id                   String  @id
+  item_id              String?
+  firmness_id          String?
+  natural_gift_power   String?
+  natural_gift_type_id String?
+  size                 String?
+  max_harvest          String?
+  growth_time          String?
+  soil_dryness         String?
+  smoothness           String?
+}
+
+model berry_firmness {
+  id         String  @id
+  identifier String?
+}
+
+model berry_flavors {
+  berry_id        String?
+  contest_type_id String?
+  flavor          String?
+  id              BigInt  @id @default(autoincrement())
+}
+
+model characteristics {
+  id         String  @id
+  stat_id    String?
+  gene_mod_5 String?
+}
+
+model conquest_episode_names {
+  episode_id        String?
+  local_language_id String?
+  name              String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model conquest_episode_warriors {
+  episode_id String?
+  warrior_id String?
+  id         BigInt  @id @default(autoincrement())
+}
+
+model conquest_episodes {
+  id         String  @id
+  identifier String?
+}
+
+model conquest_kingdom_names {
+  kingdom_id        String?
+  local_language_id String?
+  name              String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model conquest_kingdoms {
+  id         String  @id
+  identifier String?
+  type_id    String?
+}
+
+model conquest_max_links {
+  warrior_rank_id    String?
+  pokemon_species_id String?
+  max_link           String?
+  id                 BigInt  @id @default(autoincrement())
+}
+
+model conquest_move_data {
+  move_id         String?
+  power           String?
+  accuracy        String?
+  effect_chance   String?
+  effect_id       String?
+  range_id        String?
+  displacement_id String?
+  id              BigInt  @id @default(autoincrement())
+}
+
+model conquest_move_displacement_prose {
+  move_displacement_id String?
+  local_language_id    String?
+  name                 String?
+  short_effect         String?
+  effect               String?
+  id                   BigInt  @id @default(autoincrement())
+}
+
+model conquest_move_displacements {
+  id             String  @id
+  identifier     String?
+  affects_target String?
+}
+
+model conquest_move_effect_prose {
+  conquest_move_effect_id String?
+  local_language_id       String?
+  short_effect            String?
+  effect                  String?
+  id                      BigInt  @id @default(autoincrement())
+}
+
+model conquest_move_effects {
+  id String @id
+}
+
+model conquest_move_range_prose {
+  conquest_move_range_id String?
+  local_language_id      String?
+  name                   String?
+  description            String?
+  id                     BigInt  @id @default(autoincrement())
+}
+
+model conquest_move_ranges {
+  id         String  @id
+  identifier String?
+  targets    String?
+}
+
+model conquest_pokemon_abilities {
+  pokemon_species_id String?
+  slot               String?
+  ability_id         String?
+  id                 BigInt  @id @default(autoincrement())
+}
+
+model conquest_pokemon_evolution {
+  evolved_species_id     String?
+  required_stat_id       String?
+  minimum_stat           String?
+  minimum_link           String?
+  kingdom_id             String?
+  warrior_gender_id      String?
+  item_id                String?
+  recruiting_ko_required String?
+  id                     BigInt  @id @default(autoincrement())
+}
+
+model conquest_pokemon_moves {
+  pokemon_species_id String?
+  move_id            String?
+  id                 BigInt  @id @default(autoincrement())
+}
+
+model conquest_pokemon_stats {
+  pokemon_species_id String?
+  conquest_stat_id   String?
+  base_stat          String?
+  id                 BigInt  @id @default(autoincrement())
+}
+
+model conquest_stat_names {
+  conquest_stat_id  String?
+  local_language_id String?
+  name              String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model conquest_stats {
+  id         String  @id
+  identifier String?
+  is_base    String?
+}
+
+model conquest_transformation_pokemon {
+  transformation_id  String?
+  pokemon_species_id String?
+  id                 BigInt  @id @default(autoincrement())
+}
+
+model conquest_transformation_warriors {
+  transformation_id  String?
+  present_warrior_id String?
+  id                 BigInt  @id @default(autoincrement())
+}
+
+model conquest_warrior_archetypes {
+  id         String  @id
+  identifier String?
+}
+
+model conquest_warrior_rank_stat_map {
+  warrior_rank_id String?
+  warrior_stat_id String?
+  base_stat       String?
+  id              BigInt  @id @default(autoincrement())
+}
+
+model conquest_warrior_ranks {
+  id         String  @id
+  warrior_id String?
+  rank       String?
+  skill_id   String?
+}
+
+model conquest_warrior_skills {
+  id         String  @id
+  identifier String?
+}
+
+model conquest_warrior_specialties {
+  warrior_id String?
+  type_id    String?
+  slot       String?
+  id         BigInt  @id @default(autoincrement())
+}
+
+model conquest_warrior_stat_names {
+  warrior_stat_id   String?
+  local_language_id String?
+  name              String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model conquest_warrior_stats {
+  id         String  @id
+  identifier String?
+}
+
+model conquest_warrior_transformation {
+  transformed_warrior_rank_id String?
+  is_automatic                String?
+  required_link               String?
+  completed_episode_id        String?
+  current_episode_id          String?
+  distant_warrior_id          String?
+  female_warlord_count        String?
+  pokemon_count               String?
+  collection_type_id          String?
+  warrior_count               String?
+  id                          BigInt  @id @default(autoincrement())
+}
+
+model conquest_warriors {
+  id           String  @id
+  identifier   String?
+  gender_id    String?
+  archetype_id String?
+}
+
+model contest_combos {
+  first_move_id  String?
+  second_move_id String?
+  id             BigInt  @id @default(autoincrement())
+}
+
+model contest_effect_prose {
+  contest_effect_id String?
+  local_language_id String?
+  flavor_text       String?
+  effect            String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model contest_effects {
+  id     String  @id
+  appeal String?
+  jam    String?
+}
+
+model contest_types {
+  id         String  @id
+  identifier String?
+}
+
+model egg_groups {
+  id         String  @id
+  identifier String?
+}
+
+model encounter_condition_prose {
+  encounter_condition_id String?
+  local_language_id      String?
+  name                   String?
+  id                     BigInt  @id @default(autoincrement())
+}
+
+model encounter_condition_value_map {
+  encounter_id                 String?
+  encounter_condition_value_id String?
+  id                           BigInt  @id @default(autoincrement())
+}
+
+model encounter_condition_value_prose {
+  encounter_condition_value_id String?
+  local_language_id            String?
+  name                         String?
+  id                           BigInt  @id @default(autoincrement())
+}
+
+model encounter_condition_values {
+  id                     String  @id
+  encounter_condition_id String?
+  identifier             String?
+  is_default             String?
+}
+
+model encounter_conditions {
+  id         String  @id
+  identifier String?
+}
+
+model encounter_method_prose {
+  encounter_method_id String?
+  local_language_id   String?
+  name                String?
+  id                  BigInt  @id @default(autoincrement())
+}
+
+model encounter_slots {
+  id                  String  @id
+  version_group_id    String?
+  encounter_method_id String?
+  slot                String?
+  rarity              String?
+}
+
+model encounters {
+  id                String  @id
+  version_id        String?
+  location_area_id  String?
+  encounter_slot_id String?
+  pokemon_id        String?
+  min_level         String?
+  max_level         String?
+}
+
+model evolution_chains {
+  id                   String  @id
+  baby_trigger_item_id String?
+}
+
+model evolution_trigger_prose {
+  evolution_trigger_id String?
+  local_language_id    String?
+  name                 String?
+  id                   BigInt  @id @default(autoincrement())
+}
+
+model evolution_triggers {
+  id         String  @id
+  identifier String?
+}
+
+model experience {
+  growth_rate_id String?
+  level          String?
+  experience     String?
+  id             BigInt  @id @default(autoincrement())
+}
+
+model genders {
+  id         String  @id
+  identifier String?
+}
+
+model generations {
+  id             String  @id
+  main_region_id String?
+  identifier     String?
+}
+
+model growth_rate_prose {
+  growth_rate_id    String?
+  local_language_id String?
+  name              String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model growth_rates {
+  id         String  @id
+  identifier String?
+  formula    String?
+}
+
+model item_categories {
+  id         String  @id
+  pocket_id  String?
+  identifier String?
+}
+
+model item_category_prose {
+  item_category_id  String?
+  local_language_id String?
+  name              String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model item_flag_map {
+  item_id      String?
+  item_flag_id String?
+  id           BigInt  @id @default(autoincrement())
+}
+
+model item_flag_prose {
+  item_flag_id      String?
+  local_language_id String?
+  name              String?
+  description       String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model item_flags {
+  id         String  @id
+  identifier String?
+}
+
+model item_flavor_summaries {
+  item_id           String?
+  local_language_id String?
+  flavor_summary    String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model item_fling_effect_prose {
+  item_fling_effect_id String?
+  local_language_id    String?
+  effect               String?
+  id                   BigInt  @id @default(autoincrement())
+}
+
+model item_fling_effects {
+  id         String  @id
+  identifier String?
+}
+
+model item_game_indices {
+  item_id       String?
+  generation_id String?
+  game_index    String?
+  id            BigInt  @id @default(autoincrement())
+}
+
+model item_pockets {
+  id         String  @id
+  identifier String?
+}
+
+model item_prose {
+  item_id           String?
+  local_language_id String?
+  short_effect      String?
+  effect            String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model items {
+  id              String  @id
+  identifier      String?
+  category_id     String?
+  cost            String?
+  fling_power     String?
+  fling_effect_id String?
+}
+
+model location_area_encounter_rates {
+  location_area_id    String?
+  encounter_method_id String?
+  version_id          String?
+  rate                String?
+  id                  BigInt  @id @default(autoincrement())
+}
+
+model location_area_prose {
+  location_area_id  String?
+  local_language_id String?
+  name              String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model location_areas {
+  id          String  @id
+  location_id String?
+  game_index  String?
+  identifier  String?
+}
+
+model location_game_indices {
+  location_id   String?
+  generation_id String?
+  game_index    String?
+  id            BigInt  @id @default(autoincrement())
+}
+
+model locations {
+  id         String  @id
+  region_id  String?
+  identifier String?
+}
+
+model machines {
+  machine_number   String?
+  version_group_id String?
+  item_id          String?
+  move_id          String?
+  id               BigInt  @id @default(autoincrement())
+}
+
+model move_battle_style_prose {
+  move_battle_style_id String?
+  local_language_id    String?
+  name                 String?
+  id                   BigInt  @id @default(autoincrement())
+}
+
+model move_battle_styles {
+  id         String  @id
+  identifier String?
+}
+
+model move_changelog {
+  move_id                     String?
+  changed_in_version_group_id String?
+  type_id                     String?
+  power                       String?
+  pp                          String?
+  accuracy                    String?
+  priority                    String?
+  target_id                   String?
+  effect_id                   String?
+  effect_chance               String?
+  id                          BigInt  @id @default(autoincrement())
+}
+
+model move_damage_classes {
+  id         String  @id
+  identifier String?
+}
+
+model move_effect_changelog {
+  id                          String  @id
+  effect_id                   String?
+  changed_in_version_group_id String?
+}
+
+model move_effect_changelog_prose {
+  move_effect_changelog_id String?
+  local_language_id        String?
+  effect                   String?
+  id                       BigInt  @id @default(autoincrement())
+}
+
+model move_effects {
+  id String @id
+}
+
+model move_flag_map {
+  move_id      String?
+  move_flag_id String?
+  id           BigInt  @id @default(autoincrement())
+}
+
+model move_flag_prose {
+  move_flag_id      String?
+  local_language_id String?
+  name              String?
+  description       String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model move_flags {
+  id         String  @id
+  identifier String?
+}
+
+model move_flavor_summaries {
+  move_id           String?
+  local_language_id String?
+  flavor_summary    String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model move_meta {
+  move_id          String?
+  meta_category_id String?
+  meta_ailment_id  String?
+  min_hits         String?
+  max_hits         String?
+  min_turns        String?
+  max_turns        String?
+  drain            String?
+  healing          String?
+  crit_rate        String?
+  ailment_chance   String?
+  flinch_chance    String?
+  stat_chance      String?
+  id               BigInt  @id @default(autoincrement())
+}
+
+model move_meta_ailment_names {
+  move_meta_ailment_id String?
+  local_language_id    String?
+  name                 String?
+  id                   BigInt  @id @default(autoincrement())
+}
+
+model move_meta_ailments {
+  id         String  @id
+  identifier String?
+}
+
+model move_meta_categories {
+  id         String  @id
+  identifier String?
+}
+
+model move_meta_category_prose {
+  move_meta_category_id String?
+  local_language_id     String?
+  description           String?
+  id                    BigInt  @id @default(autoincrement())
+}
+
+model move_meta_stat_changes {
+  move_id String?
+  stat_id String?
+  change  String?
+  id      BigInt  @id @default(autoincrement())
+}
+
+model move_target_prose {
+  move_target_id    String?
+  local_language_id String?
+  name              String?
+  description       String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model move_targets {
+  id         String  @id
+  identifier String?
+}
+
+model moves {
+  id                      String  @id
+  identifier              String?
+  generation_id           String?
+  type_id                 String?
+  power                   String?
+  pp                      String?
+  accuracy                String?
+  priority                String?
+  target_id               String?
+  damage_class_id         String?
+  effect_id               String?
+  effect_chance           String?
+  contest_type_id         String?
+  contest_effect_id       String?
+  super_contest_effect_id String?
+
+  pokemon_moves pokemon_moves[]
+}
+
+model nature_battle_style_preferences {
+  nature_id            String?
+  move_battle_style_id String?
+  low_hp_preference    String?
+  high_hp_preference   String?
+  id                   BigInt  @id @default(autoincrement())
+}
+
+model nature_pokeathlon_stats {
+  nature_id          String?
+  pokeathlon_stat_id String?
+  max_change         String?
+  id                 BigInt  @id @default(autoincrement())
+}
+
+model natures {
+  id                String  @id
+  identifier        String?
+  decreased_stat_id String?
+  increased_stat_id String?
+  hates_flavor_id   String?
+  likes_flavor_id   String?
+  game_index        String?
+}
+
+model pal_park {
+  species_id String?
+  area_id    String?
+  base_score String?
+  rate       String?
+  id         BigInt  @id @default(autoincrement())
+}
+
+model pal_park_area_names {
+  pal_park_area_id  String?
+  local_language_id String?
+  name              String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model pal_park_areas {
+  id         String  @id
+  identifier String?
+}
+
+model pokeathlon_stats {
+  id         String  @id
+  identifier String?
+}
+
+model pokedex_prose {
+  pokedex_id        String?
+  local_language_id String?
+  name              String?
+  description       String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model pokedex_version_groups {
+  pokedex_id       String?
+  version_group_id String?
+  id               BigInt  @id @default(autoincrement())
+}
+
+model pokedexes {
+  id             String  @id
+  region_id      String?
+  identifier     String?
+  is_main_series String?
+}
+
+model pokemon {
+  id              String  @id
+  identifier      String?
+  species_id      String?
+  height          String?
+  weight          String?
+  base_experience String?
+  orders          String?
+  is_default      String?
+  
+  
+  pokemon_moves pokemon_moves[]
+}
+
+model pokemon_abilities {
+  pokemon_id String?
+  ability_id String?
+  is_hidden  String?
+  slot       String?
+  id         BigInt  @id @default(autoincrement())
+}
+
+model pokemon_abilities_past {
+  pokemon_id    String?
+  generation_id String?
+  ability_id    String?
+  is_hidden     String?
+  slot          String?
+  id            BigInt  @id @default(autoincrement())
+}
+
+model pokemon_colors {
+  id         String  @id
+  identifier String?
+}
+
+model pokemon_dex_numbers {
+  species_id     String?
+  pokedex_id     String?
+  pokedex_number String?
+  id             BigInt  @id @default(autoincrement())
+}
+
+model pokemon_egg_groups {
+  species_id   String?
+  egg_group_id String?
+  id           BigInt  @id @default(autoincrement())
+}
+
+model pokemon_evolution {
+  id                      String  @id
+  evolved_species_id      String?
+  evolution_trigger_id    String?
+  trigger_item_id         String?
+  minimum_level           String?
+  gender_id               String?
+  location_id             String?
+  held_item_id            String?
+  time_of_day             String?
+  known_move_id           String?
+  known_move_type_id      String?
+  minimum_happiness       String?
+  minimum_beauty          String?
+  minimum_affection       String?
+  relative_physical_stats String?
+  party_species_id        String?
+  party_type_id           String?
+  trade_species_id        String?
+  needs_overworld_rain    String?
+  turn_upside_down        String?
+  region_id               String?
+  base_form_id            String?
+}
+
+model pokemon_form_generations {
+  pokemon_form_id String?
+  generation_id   String?
+  game_index      String?
+  id              BigInt  @id @default(autoincrement())
+}
+
+model pokemon_form_pokeathlon_stats {
+  pokemon_form_id    String?
+  pokeathlon_stat_id String?
+  minimum_stat       String?
+  base_stat          String?
+  maximum_stat       String?
+  id                 BigInt  @id @default(autoincrement())
+}
+
+model pokemon_form_types {
+  pokemon_form_id String?
+  type_id         String?
+  slot            String?
+  id              BigInt  @id @default(autoincrement())
+}
+
+model pokemon_forms {
+  id                             String  @id
+  identifier                     String?
+  form_identifier                String?
+  pokemon_id                     String?
+  introduced_in_version_group_id String?
+  is_default                     String?
+  is_battle_only                 String?
+  is_mega                        String?
+  form_order                     String?
+  orders                         String?
+}
+
+model pokemon_game_indices {
+  pokemon_id String?
+  version_id String?
+  game_index String?
+  id         BigInt  @id @default(autoincrement())
+}
+
+model pokemon_habitat_names {
+  pokemon_habitat_id String?
+  local_language_id  String?
+  name               String?
+  id                 BigInt  @id @default(autoincrement())
+}
+
+model pokemon_habitats {
+  id         String  @id
+  identifier String?
+}
+
+model pokemon_items {
+  pokemon_id String?
+  version_id String?
+  item_id    String?
+  rarity     String?
+  id         BigInt  @id @default(autoincrement())
+}
+
+model pokemon_move_method_prose {
+  pokemon_move_method_id String?
+  local_language_id      String?
+  name                   String?
+  description            String?
+  id                     BigInt  @id @default(autoincrement())
+}
+
+model pokemon_move_methods {
+  id         String  @id
+  identifier String?
+}
+
+model pokemon_moves {
+  pokemon_id             String?
+  version_group_id       String?
+  move_id                String?
+  pokemon_move_method_id String?
+  level                  String?
+  orders                 String?
+  mastery                String?
+  id                     BigInt  @id @default(autoincrement())
+
+
+  pokemon pokemon? @relation(fields: [pokemon_id], references: [id])
+  move    moves?   @relation(fields: [move_id], references: [id])
+}
+
+model pokemon_shape_prose {
+  pokemon_shape_id  String?
+  local_language_id String?
+  name              String?
+  awesome_name      String?
+  description       String?
+  id                BigInt  @id @default(autoincrement())
+}
+
+model pokemon_shapes {
+  id         String  @id
+  identifier String?
+}
+
+model pokemon_species_flavor_summaries {
+  pokemon_species_id String?
+  local_language_id  String?
+  flavor_summary     String?
+  id                 BigInt  @id @default(autoincrement())
+}
+
+model pokemon_species_prose {
+  pokemon_species_id String?
+  local_language_id  String?
+  form_description   String?
+  id                 BigInt  @id @default(autoincrement())
+}
+
+model pokemon_stats {
+  pokemon_id String?
+  stat_id    String?
+  base_stat  String?
+  effort     String?
+  id         BigInt  @id @default(autoincrement())
+}
+
+model pokemon_types {
+  pokemon_id String?
+  type_id    String?
+  slot       String?
+  id         BigInt  @id @default(autoincrement())
+}
+
+model pokemon_types_past {
+  pokemon_id    String?
+  generation_id String?
+  type_id       String?
+  slot          String?
+  id            BigInt  @id @default(autoincrement())
+}
+
+model regions {
+  id         String  @id
+  identifier String?
+}
+
+model stats {
+  id              String  @id
+  damage_class_id String?
+  identifier      String?
+  is_battle_only  String?
+  game_index      String?
+}
+
+model super_contest_combos {
+  first_move_id  String?
+  second_move_id String?
+  id             BigInt  @id @default(autoincrement())
+}
+
+model super_contest_effect_prose {
+  super_contest_effect_id String?
+  local_language_id       String?
+  flavor_text             String?
+  id                      BigInt  @id @default(autoincrement())
+}
+
+model super_contest_effects {
+  id     String  @id
+  appeal String?
+}
+
+model type_efficacy {
+  damage_type_id String?
+  target_type_id String?
+  damage_factor  String?
+  id             BigInt  @id @default(autoincrement())
+}
+
+model type_efficacy_past {
+  damage_type_id String?
+  target_type_id String?
+  damage_factor  String?
+  generation_id  String?
+  id             BigInt  @id @default(autoincrement())
+}
+
+model type_game_indices {
+  type_id       String?
+  generation_id String?
+  game_index    String?
+  id            BigInt  @id @default(autoincrement())
+}
+
+model types {
+  id              String  @id
+  identifier      String?
+  generation_id   String?
+  damage_class_id String?
+}
+
+model version_group_pokemon_move_methods {
+  version_group_id       String?
+  pokemon_move_method_id String?
+  id                     BigInt  @id @default(autoincrement())
+}
+
+model version_group_regions {
+  version_group_id String?
+  region_id        String?
+  id               BigInt  @id @default(autoincrement())
+}
+
+model version_groups {
+  id            String  @id
+  identifier    String?
+  generation_id String?
+  orders        String?
+}
+
+model versions {
+  id               String  @id
+  version_group_id String?
+  identifier       String?
+}
