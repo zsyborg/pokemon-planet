@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+.pokemodal{
+  transition: all 0.3s ease-in-out;
+}
+

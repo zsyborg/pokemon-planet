@@ -44,6 +44,29 @@ export default async function PokemonPage({
           ) : null
         )}
       </ul>
+
+        <div className="grid grid-cols-2 gap-8">
+          <div>
+            <h2 className="mt-4 font-semibold">Moves</h2>
+            <ul className="text-sm list-disc ml-4">
+              {pokemon.pokemon_moves.map((pm) =>
+                pm.move ? (
+                  <li key={pm.id}>{pm.move.identifier}</li>
+                ) : null
+              )}
+            </ul>
+          </div>
+          <div>
+              <h2 className="mt-4 font-semibold">Details</h2>
+              <p className="text-sm">
+                <strong>Height:</strong> {pokemon.height}
+              </p>
+              <p className="text-sm">
+                <strong>Weight:</strong> {pokemon.weight}
+              </p>
+            </div>
+          </div>
+            
     </main>
   );
 }
