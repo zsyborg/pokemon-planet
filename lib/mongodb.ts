@@ -1,6 +1,6 @@
 import { MongoClient, Db, Collection } from "mongodb";
 
-const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
+const uri = process.env.MONGODB_URI || "mongodb+srv://techzasha:Ajna4028@dharti.ctgvhra.mongodb.net/Pokemon?appName=Dharti";
 
 let client: MongoClient;
 let db: Db;
