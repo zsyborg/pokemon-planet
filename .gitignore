@@ -46,4 +46,15 @@ next-env.d.ts
 
 
 # Pokemon Sprites
-/public/sprites/
+/public/sprites/badges
+/public/sprites/items
+/public/sprites/scripts
+/public/sprites/sprites/badges
+/public/sprites/sprites/items
+/public/sprites/sprites/types
+/public/sprites/sprites/pokemon/back
+/public/sprites/sprites/pokemon/female
+/public/sprites/sprites/pokemon/lowres
+/public/sprites/sprites/pokemon/other
+/public/sprites/sprites/pokemon/shiny
+/public/sprites/sprites/pokemon/versions
