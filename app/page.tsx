@@ -7,9 +7,9 @@ import PokemonDetails from "./components/PokemonDetails";
 
 
 export default function Home() {
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemon, setPokemon] = useState<any[]>([]);
   const [query, setQuery] = useState("");
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [selectedPokemon, setSelectedPokemon] = useState<any>(null);
 
   useEffect(() => {
     fetch(`/api/pokemon?q=${encodeURIComponent(query)}`)

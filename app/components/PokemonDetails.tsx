@@ -55,17 +55,17 @@ export default function PokemonDetails({ pokemon, onClose }: { pokemon: any; onC
           height={150}
           className="mx-auto rounded-full border-4 border-yellow-400 shadow-lg bg-white p-2"
         />
-        <h1 className="capitalize text-3xl font-bold text-gray-800 mt-4">
+        <h1 className="capitalize text-3xl font-bold text-amber-400 mt-4">
           {details.identifier}
         </h1>
         <div className="flex justify-center gap-2 mt-2">
           {details.types?.map((type: any) => (
-            <span key={type.id} className="px-3 py-1 rounded-full text-white text-sm font-semibold bg-gray-500 capitalize">
+            <span key={type.id} className={`px-3 py-1 ${typeColors[type.identifier] || 'bg-gray-500'} rounded-full text-white text-sm font-semibold capitalize`}>
               {type.identifier}
             </span>
           ))}
         </div>
-        <p className="text-sm text-gray-700 mt-2 uppercase"> {details.generation?.identifier}</p>
+        <p className="text-sm text-amber-300 mt-2 uppercase"> {details.generation?.identifier}</p>
       </div>
 
       <div className="bg-white/70 p-4 rounded-lg shadow-md mb-6">
