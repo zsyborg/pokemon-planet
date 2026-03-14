@@ -16,7 +16,12 @@ export default function Auctions() {
 
     useEffect(() => {
         fetch(`/api/auction`)
-        .then(res => res.json())
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
         .then(data => {
             setAuctions(data);
             if (data.length > 0) {
@@ -24,7 +29,8 @@ export default function Auctions() {
             } else {
               setActiveAuctionId(null);
             }
-        });
+        })
+        .catch(err => console.error("Failed to load auctions:", err));
 
          const timer = setInterval(() => {
             setNow(Date.now());
@@ -37,13 +43,19 @@ export default function Auctions() {
     useEffect(() => {
         if (activeAuctionId) {
             fetch(`/api/auction/${activeAuctionId}`)
-            .then(res => res.json())
+            .then(res => {
+              if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+              }
+              return res.json();
+            })
             .then(data => {
                 const parsed = parseBids(data.bids);
                 setBidStream(parsed);
                 console.log("Parsed bids:", parsed);
                 console.log("Bids data:", data);
-            });
+            })
+            .catch(err => console.error("Failed to load auction:", err));
         } else {
             setBidStream([]);
         }
@@ -77,16 +89,27 @@ export default function Auctions() {
             },
             body: JSON.stringify({thebidId: bidId, user: "zasha", bid: bid, timeStamp: now}),
         })
-        .then(res => res.json())
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
         .then(() => {
             // Refetch bids
             fetch(`/api/auction/${bidId}`)
-            .then(res => res.json())
+            .then(res => {
+              if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+              }
+              return res.json();
+            })
             .then(data => {
                 const parsed = parseBids(data.bids);
                 setBidStream(parsed);
             });
-        });
+        })
+        .catch(err => console.error("Failed to place bid:", err));
         console.log("Bid placed for auction ID:", bidId);
     }
 

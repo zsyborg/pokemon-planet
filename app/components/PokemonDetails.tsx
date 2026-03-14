@@ -31,7 +31,12 @@ export default function PokemonDetails({ pokemon, onClose }: { pokemon: any; onC
 
   useEffect(() => {
     fetch(`/api/pokemon/${pokemon.id}`)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then(data => {
         setDetails(data);
         setLoading(false);
@@ -53,14 +58,14 @@ export default function PokemonDetails({ pokemon, onClose }: { pokemon: any; onC
           alt={details.identifier ?? ""}
           width={150}
           height={150}
-          className="mx-auto rounded-full border-4 border-yellow-400 shadow-lg bg-white p-2"
+          className="mx-auto animate-pulse rounded-full border-4 border-yellow-400 shadow-lg bg-white p-2"
         />
         <h1 className="capitalize text-3xl font-bold text-amber-400 mt-4">
           {details.identifier}
         </h1>
         <div className="flex justify-center gap-2 mt-2">
           {details.types?.map((type: any) => (
-            <span key={type.id} className={`px-3 py-1 ${typeColors[type.identifier] || 'bg-gray-500'} rounded-full text-white text-sm font-semibold capitalize`}>
+            <span key={type.id} className={`animate-pulse px-3 py-1 ${typeColors[type.identifier] || 'bg-gray-500'} rounded-full text-white text-sm font-semibold capitalize`}>
               {type.identifier}
             </span>
           ))}

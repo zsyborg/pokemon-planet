@@ -1,6 +1,6 @@
 import { MongoClient, Db, Collection } from "mongodb";
 
-const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
+const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/pokemon";
 
 let client: MongoClient;
 let db: Db;
@@ -18,65 +18,81 @@ export async function getCollection(database: string, collection: string): Promi
 }
 
 export async function getAuctionCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "auction");
+  return getCollection("pokemon", "auction");
 }
 
 export async function getPokemonCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "pokemon");
+  return getCollection("pokemon", "pokemon");
 }
 
 export async function getMovesCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "moves");
+  return getCollection("pokemon", "moves");
 }
 
 export async function getAbilitiesCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "abilities");
+  return getCollection("pokemon", "abilities");
 }
 
 export async function getPokemonAbilitiesCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "pokemon_abilities");
+  return getCollection("pokemon", "pokemon_abilities");
 }
 
 export async function getPokemonFormsCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "pokemon_forms");
+  return getCollection("pokemon", "pokemon_forms");
 }
 
 export async function getPokemonMovesCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "pokemon_moves");
+  return getCollection("pokemon", "pokemon_moves");
 }
 
 export async function getPokemonSpeciesCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "pokemon_species");
+  return getCollection("pokemon", "pokemon_species");
 }
 
 export async function getPokemonEvolutionCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "pokemon_evolution");
+  return getCollection("pokemon", "pokemon_evolution");
 }
 
 export async function getEvolutionChainsCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "evolution_chains");
+  return getCollection("pokemon", "evolution_chains");
 }
 
 export async function getGenerationsCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "generations");
+  return getCollection("pokemon", "generations");
 }
 
 export async function getPokemonTypesCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "pokemon_types");
+  return getCollection("pokemon", "pokemon_types");
 }
 
 export async function getPokemonStatsCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "pokemon_stats");
+  return getCollection("pokemon", "pokemon_stats");
 }
 
 export async function getPokemonSpeciesFlavorTextCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "pokemon_species_flavor_text");
+  return getCollection("pokemon", "pokemon_species_flavor_text");
 }
 
 export async function getTypesCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "types");
+  return getCollection("pokemon", "types");
 }
 
 export async function getStatsCollection(): Promise<Collection> {
-  return getCollection("Pokemon", "stats");
+  return getCollection("pokemon", "stats");
+}
+
+export async function getItemsCollection(): Promise<Collection> {
+  return getCollection("pokemon", "items");
+}
+
+export async function getItemNamesCollection(): Promise<Collection> {
+  return getCollection("pokemon", "item_names");
+}
+
+export async function getItemFlavorTextCollection(): Promise<Collection> {
+  return getCollection("pokemon", "item_flavor_text");
+}
+
+export async function getItemCategoriesCollection(): Promise<Collection> {
+  return getCollection("pokemon", "item_categories");
 }
