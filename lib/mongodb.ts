@@ -96,3 +96,83 @@ export async function getItemFlavorTextCollection(): Promise<Collection> {
 export async function getItemCategoriesCollection(): Promise<Collection> {
   return getCollection("pokemon", "item_categories");
 }
+
+export async function getMoveNamesCollection(): Promise<Collection> {
+  return getCollection("pokemon", "move_names");
+}
+
+export async function getMoveFlavorTextCollection(): Promise<Collection> {
+  return getCollection("pokemon", "move_flavor_text");
+}
+
+export async function getMoveMetaCollection(): Promise<Collection> {
+  return getCollection("pokemon", "move_meta");
+}
+
+export async function getMoveDamageClassesCollection(): Promise<Collection> {
+  return getCollection("pokemon", "move_damage_classes");
+}
+
+export async function getMoveDamageClassProseCollection(): Promise<Collection> {
+  return getCollection("pokemon", "move_damage_class_prose");
+}
+
+export async function getPokemonSpeciesNamesCollection(): Promise<Collection> {
+  return getCollection("pokemon", "pokemon_species_names");
+}
+
+export async function getAbilityNamesCollection(): Promise<Collection> {
+  return getCollection("pokemon", "ability_names");
+}
+
+export async function getAbilityFlavorTextCollection(): Promise<Collection> {
+  return getCollection("pokemon", "ability_flavor_text");
+}
+
+export async function getAbilityProseCollection(): Promise<Collection> {
+  return getCollection("pokemon", "ability_prose");
+}
+
+export async function getTypeEfficacyCollection(): Promise<Collection> {
+  return getCollection("pokemon", "type_efficacy");
+}
+
+export async function getTypeNamesCollection(): Promise<Collection> {
+  return getCollection("pokemon", "type_names");
+}
+
+export async function getStatNamesCollection(): Promise<Collection> {
+  return getCollection("pokemon", "stat_names");
+}
+
+export async function getEvolutionTriggersCollection(): Promise<Collection> {
+  return getCollection("pokemon", "evolution_triggers");
+}
+
+export async function getBerriesCollection(): Promise<Collection> {
+  return getCollection("pokemon", "berries");
+}
+
+export async function getBerryFirmnessNamesCollection(): Promise<Collection> {
+  return getCollection("pokemon", "berry_firmness_names");
+}
+
+export async function getBerryFlavorsCollection(): Promise<Collection> {
+  return getCollection("pokemon", "berry_flavors");
+}
+
+export async function getLocationsCollection(): Promise<Collection> {
+  return getCollection("pokemon", "locations");
+}
+
+export async function getLocationNamesCollection(): Promise<Collection> {
+  return getCollection("pokemon", "location_names");
+}
+
+export async function getNaturesCollection(): Promise<Collection> {
+  return getCollection("pokemon", "natures");
+}
+
+export async function getNatureNamesCollection(): Promise<Collection> {
+  return getCollection("pokemon", "nature_names");
+}

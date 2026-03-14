@@ -142,7 +142,7 @@ export default function ItemsPage() {
 
                   {/* Item Details */}
                   <div className="p-3">
-                    <h3 className="font-semibold text-gray-900 dark:text-white text-sm truncate">
+                    <h3 className="font-semibold uppercase text-gray-900 dark:text-white text-sm truncate">
                       {item.name || item.identifier}
                     </h3>
                     <p className="text-xs text-gray-500 dark:text-gray-400 capitalize mt-1">
