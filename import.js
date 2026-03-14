@@ -4,7 +4,7 @@ import csv from "csv-parser";
 import { MongoClient } from "mongodb";
 
 const folder = "./csv";
-const uri = "mongodb://localhost:27017";
+const uri = "mongodb+srv://techzasha:Ajna4028@dharti.ctgvhra.mongodb.net/Pokemon?appName=Dharti";
 const dbName = "pokemon";
 
 async function run() {

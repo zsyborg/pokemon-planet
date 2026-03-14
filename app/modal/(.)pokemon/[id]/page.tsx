@@ -58,7 +58,7 @@ export default function PokemonModal({
     <div className="fixed inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 bg-opacity-90 backdrop-blur-md flex items-center justify-center z-50">
       <div className="bg-gradient-to-br from-white via-gray-50 to-gray-100 p-8 rounded-2xl shadow-2xl border border-gray-200 w-[600px] max-h-[85vh] overflow-y-auto relative animate-in fade-in slide-in-from-bottom-10 duration-700 ease-out">
         <Link
-          href="/"
+          href="/pokedex"
           className="absolute top-4 right-4 text-2xl font-bold text-gray-600 hover:text-gray-800 transition-colors"
         >
           ×
